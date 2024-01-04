@@ -7,6 +7,7 @@ package br.com.pedro.projetoestudojava.primeiroprojetopratico;
 import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.Color;
 import javax.swing.BorderFactory;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 
@@ -14,7 +15,7 @@ import javax.swing.border.Border;
  *
  * @author Pedro
  */
-public class PrimeiroProjetoPraticoCadastroView extends javax.swing.JDialog {
+public final class PrimeiroProjetoPraticoCadastroView extends javax.swing.JDialog {
 
     /**
      * Creates new form PrimeiroProjetoPraticoCadastroView
@@ -22,6 +23,13 @@ public class PrimeiroProjetoPraticoCadastroView extends javax.swing.JDialog {
     public PrimeiroProjetoPraticoCadastroView(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        jTextFieldNome = borderCustomSize(jTextFieldNome, 2,0 ,0 ,0 );
+        jTextFieldIdade = borderCustomSize(jTextFieldIdade, 2,0 ,0 ,0 );
+        jTextFieldEmprego = borderCustomSize(jTextFieldEmprego, 2,0 ,0 ,0 );
+        jTextFieldNome.setForeground(Color.gray);
+        jTextFieldIdade.setForeground(Color.gray);
+        jTextFieldEmprego.setForeground(Color.gray);
         
     }
     
@@ -33,7 +41,30 @@ public class PrimeiroProjetoPraticoCadastroView extends javax.swing.JDialog {
         return jtf;
     
     }
-
+    
+    public JTextField focusGained(JTextField jtextFiedl, String parametroLegenda, JLabel legenda){
+        legenda.setForeground(Color.gray);
+        jtextFiedl = borderCustomSize(jtextFiedl, 2, 173, 216, 230);
+        if(jtextFiedl.getText().equals("")|| jtextFiedl.getText().equals(parametroLegenda)){
+        jtextFiedl.setText("");
+        return jtextFiedl; 
+        }else{
+         jtextFiedl.setForeground(Color.black);
+         return jtextFiedl;
+        }
+    }
+    
+    public JTextField focusLost(JTextField jtextFiedl, String parametroLegenda, JLabel legenda){
+        jtextFiedl = borderCustomSize(jtextFiedl, 2, 0 ,0,0);
+        if(jtextFiedl.getText().equals("") || jtextFiedl.getText().equals(parametroLegenda)){
+            legenda.setForeground(Color.white);
+            jtextFiedl.setText(parametroLegenda);
+            jtextFiedl.setForeground(Color.gray);
+            return jtextFiedl;
+        }else{
+            return jtextFiedl = borderCustomSize(jtextFiedl, 2, 0, 255, 0);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,6 +82,9 @@ public class PrimeiroProjetoPraticoCadastroView extends javax.swing.JDialog {
         jTextFieldEmprego = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabelNome = new javax.swing.JLabel();
+        jLabelEmprego = new javax.swing.JLabel();
+        jLabelIdade = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -61,16 +95,42 @@ public class PrimeiroProjetoPraticoCadastroView extends javax.swing.JDialog {
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Cadastrar");
+        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jButton2.setBackground(new java.awt.Color(51, 51, 51));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Voltar");
+        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51)));
 
         jTextFieldNome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTextFieldNome.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextFieldNomeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldNomeFocusLost(evt);
+            }
+        });
 
         jTextFieldIdade.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTextFieldIdade.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextFieldIdadeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldIdadeFocusLost(evt);
+            }
+        });
 
         jTextFieldEmprego.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTextFieldEmprego.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextFieldEmpregoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldEmpregoFocusLost(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -96,35 +156,52 @@ public class PrimeiroProjetoPraticoCadastroView extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
+        jLabelNome.setText("Nome:");
+
+        jLabelEmprego.setText("Emprego:");
+
+        jLabelIdade.setText("Idade:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextFieldNome)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jTextFieldIdade)
-                    .addComponent(jTextFieldEmprego, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jTextFieldEmprego, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabelNome)
+                            .addComponent(jLabelEmprego)
+                            .addComponent(jLabelIdade))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
+                .addGap(28, 28, 28)
+                .addComponent(jLabelNome)
+                .addGap(0, 0, 0)
                 .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelIdade)
+                .addGap(2, 2, 2)
                 .addComponent(jTextFieldIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelEmprego)
+                .addGap(3, 3, 3)
                 .addComponent(jTextFieldEmprego, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -144,6 +221,30 @@ public class PrimeiroProjetoPraticoCadastroView extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextFieldNomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldNomeFocusGained
+        jTextFieldNome = focusGained(jTextFieldNome, "Nome:", jLabelNome);
+    }//GEN-LAST:event_jTextFieldNomeFocusGained
+
+    private void jTextFieldIdadeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldIdadeFocusGained
+        jTextFieldIdade = focusGained(jTextFieldIdade, "Idade:", jLabelIdade);
+    }//GEN-LAST:event_jTextFieldIdadeFocusGained
+
+    private void jTextFieldEmpregoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldEmpregoFocusGained
+       jTextFieldEmprego = focusGained(jTextFieldEmprego, "Emprego:", jLabelEmprego);
+    }//GEN-LAST:event_jTextFieldEmpregoFocusGained
+
+    private void jTextFieldNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldNomeFocusLost
+     jTextFieldNome = focusLost(jTextFieldNome, "Nome:", jLabelNome);
+    }//GEN-LAST:event_jTextFieldNomeFocusLost
+
+    private void jTextFieldIdadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldIdadeFocusLost
+       jTextFieldIdade = focusLost(jTextFieldIdade, "Idade:", jLabelIdade);
+    }//GEN-LAST:event_jTextFieldIdadeFocusLost
+
+    private void jTextFieldEmpregoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldEmpregoFocusLost
+     jTextFieldEmprego = focusLost(jTextFieldEmprego, "Emprego:", jLabelEmprego);
+    }//GEN-LAST:event_jTextFieldEmpregoFocusLost
 
     /**
      * @param args the command line arguments
@@ -176,6 +277,9 @@ public class PrimeiroProjetoPraticoCadastroView extends javax.swing.JDialog {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelEmprego;
+    private javax.swing.JLabel jLabelIdade;
+    private javax.swing.JLabel jLabelNome;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextFieldEmprego;

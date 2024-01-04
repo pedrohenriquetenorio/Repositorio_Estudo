@@ -32,15 +32,15 @@ public class PrimeiroProjetoPraticoView extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTablePessoa = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        jButtonPesquisa = new javax.swing.JButton();
+        jTextFieldPesquisa = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,8 +66,9 @@ public class PrimeiroProjetoPraticoView extends javax.swing.JFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
         );
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTablePessoa.setBackground(new java.awt.Color(255, 255, 255));
+        jTablePessoa.setForeground(new java.awt.Color(51, 51, 51));
+        jTablePessoa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -78,7 +79,7 @@ public class PrimeiroProjetoPraticoView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTablePessoa);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -142,7 +143,7 @@ public class PrimeiroProjetoPraticoView extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jButton6.setText("PESQUISA");
+        jButtonPesquisa.setText("PESQUISA");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -156,9 +157,9 @@ public class PrimeiroProjetoPraticoView extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButtonPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1)))
+                                .addComponent(jTextFieldPesquisa)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -173,8 +174,8 @@ public class PrimeiroProjetoPraticoView extends javax.swing.JFrame {
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                            .addComponent(jTextField1))
+                            .addComponent(jButtonPesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                            .addComponent(jTextFieldPesquisa))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -225,13 +226,13 @@ public class PrimeiroProjetoPraticoView extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButtonPesquisa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable jTablePessoa;
+    private javax.swing.JTextField jTextFieldPesquisa;
     // End of variables declaration//GEN-END:variables
 }
